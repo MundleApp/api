@@ -15,6 +15,11 @@ export const invalidCredentials = new APIError(
     "Invalid credentials."
 );
 
+export const unableToVerifyToken = new APIError(
+    401,
+    "Unauthorized."
+)
+
 export const mustBeIdentified = new APIError(
     401,
     "Unauthorized."
