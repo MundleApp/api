@@ -1,7 +1,6 @@
 import { PrismaClient, Prisma, User, Session, Track } from '@prisma/client'
 
 const prisma = new PrismaClient({
-    log: ['query']
 });
 
 const userPublicIncludes = Prisma.validator<Prisma.UserDefaultArgs>()({
