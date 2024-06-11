@@ -22,8 +22,9 @@ router.use("/session", authenticatedMiddleware, sessionRouter)
 
 router.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     if (err instanceof APIError) {
-        res.status(err.code).json({
-            error: err.message
+        res.status(err.httpStatus).json({
+            error: err.message,
+            code: err.code
         });         
     } else {
         res.status(500).json({
