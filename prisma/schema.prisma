@@ -6,20 +6,26 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
 model User {
   id                        Int               @id @default(autoincrement())
   nickname                  String
-  phoneNumber               String            @unique
-  password                  String
+  phoneNumber               String?           @unique
+  password                  String?
+  type                      UserType
   createdAt                 DateTime          @default(now())
   updatedAt                 DateTime          @default(now())
   owningSessions            Session[]
   tracks                    Track[]
   subscribedSessions        UsersInSessions[]
+}
+
+enum UserType {
+  REGULAR
+  GUEST
 }
 
 model Session {

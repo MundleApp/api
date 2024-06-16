@@ -4,6 +4,8 @@ import { UserCreationPayload, UserCreationPayloadSchema } from '../models/user/U
 import { UserCreationResponse } from '../models/user/UserCreationResponse';
 import { generateToken } from '../helpers/jwt';
 import { hashPassword } from '../helpers/hash';
+import { createGuest, createUser } from '../repositories/user';
+import { GuestCreationPayload, GuestCreationPayloadSchema } from '../models/user/guest_creation_payload';
 
 const router = Router();
 
@@ -16,15 +18,29 @@ router.post("/", async (req: Request, res: Response, next: NextFunction) => {
         const payload = await UserCreationPayloadSchema.validate(req.body as UserCreationPayload);
         payload.password = await hashPassword(payload.password);
 
-        const user = await prisma.user.create({
-            data: payload,
-        });
-    
+        const user = await createUser(payload)
+        
         res
           .status(200)
           .json({
             accessToken: generateToken(user.id)
           } as UserCreationResponse);    
+    } catch (e) {
+        next(e);
+    }
+});
+
+router.post("/guest", async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const payload = await GuestCreationPayloadSchema.validate(req.body as GuestCreationPayload);
+
+        const user = await createGuest(payload);
+
+        res
+        .status(200)
+        .json({
+          accessToken: generateToken(user.id)
+        } as UserCreationResponse);
     } catch (e) {
         next(e);
     }

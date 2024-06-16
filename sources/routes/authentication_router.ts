@@ -18,11 +18,12 @@ router.post("/", async (req: Request, res: Response, next: NextFunction) => {
 
         const matchingUser = await prisma.user.findFirst({
             where: {
-                phoneNumber: payload.phoneNumber
+                phoneNumber: payload.phoneNumber,
+                type: "REGULAR"
             }
         });
 
-        if (!matchingUser) {
+        if (!matchingUser || !matchingUser.password) {
             throw invalidCredentials;
         }
 
