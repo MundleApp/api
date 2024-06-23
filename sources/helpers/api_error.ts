@@ -31,7 +31,7 @@ export const unableToVerifyToken = new APIError(
 
 export const mustBeIdentified = new APIError(
     401,
-    null,
+    APIErrorCode.unableToValidateAuthentication,
     "Unauthorized."
 )
 
