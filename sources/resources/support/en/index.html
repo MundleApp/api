@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mundle Support</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .app-icon {
+            width: 50px;
+            height: 50px;
+            vertical-align: middle;
+            margin-right: 10px;
+            border-radius: 10px;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+        }
+        .header h1 {
+            margin: 0;
+        }
+        .email-link {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        .email-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Light mode styles */
+        body {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        .container {
+            border: 1px solid #ddd;
+            background-color: #ffffff;
+        }
+
+        /* Dark mode styles */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #121212;
+                color: #ffffff;
+            }
+            .container {
+                border: 1px solid #333;
+                background-color: #1e1e1e;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            }
+            .email-link {
+                color: #1E90FF;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="logo.png" alt="Mundle Icon" class="app-icon">
+            <h1>Mundle Support</h1>
+        </div>
+        <p>Welcome to the support page for Mundle. If you are experiencing any issues or have any questions about our app, we're here to help. Please find the contact information below to reach out to our support team.</p>
+        <hr>
+        <h2>Contact Support</h2>
+        <p><strong>Email:</strong> <a href="mailto:mundlefr@gmail.com" class="email-link">mundlefr@gmail.com</a></p>
+        <hr>
+        <p>For any further assistance or inquiries, please do not hesitate to contact us via the provided email address. Our support team is available to assist you with any concerns you may have.</p>
+        <hr>
+        <div class="header">
+            <img src="logo.png" alt="Mundle Icon" class="app-icon">
+            <p><strong>Mundle</strong> - Your go-to app to play music with your friends in your parties!</p>
+        </div>
+        <hr>
+        <p>Thank you for using Mundle!</p>
+    </div>
+</body>
+</html>
