@@ -162,3 +162,7 @@ export const updateTrackState = async (user: User, trackId: number, state: Track
         }
     })
 }
+
+export const universalLinkJoinUrl = (sessionId: number): string => {
+    return `https://go.mundle.arnaudwurmel.fr/session/join?sessionId=${sessionId}`
+}
